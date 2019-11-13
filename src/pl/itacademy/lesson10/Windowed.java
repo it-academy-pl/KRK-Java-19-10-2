@@ -13,12 +13,4 @@ public interface Windowed extends Serializable, Cloneable {
   static void cleanWindow() {
 
   }
-
-  private void doSomething() {
-
-  }
-
-  private static void doSomethingAnother() {
-
-  }
 }
