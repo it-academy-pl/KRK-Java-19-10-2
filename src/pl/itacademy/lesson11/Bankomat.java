@@ -12,8 +12,8 @@ public class Bankomat implements Withdrawable{
         if (askPinCode()) {
             //getAccountNumber from card
             //getBank name from card
-            //check is IngBank has the same name as bank from card
-            //find account by number in IngBank
+            //check is bank name has the same name as bank from card
+            //find account by number in bank
             //withdraw account by amount
             //return amount of money
             return null;
