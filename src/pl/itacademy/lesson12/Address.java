@@ -36,4 +36,11 @@ public class Address implements Cloneable {
     protected Address clone() throws CloneNotSupportedException {
         return (Address) super.clone();
     }
+
+    //DO NOT repeat it at home:
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Building number [" + building + "] on " + street + " street in " + city + " has been destroyed!");
+    }
 }
