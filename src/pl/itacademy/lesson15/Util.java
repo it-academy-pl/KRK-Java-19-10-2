@@ -47,4 +47,8 @@ public class Util {
     static <T> boolean isEqual(T first, T second) {
         return first.equals(second);
     }
+
+    static <T> boolean isEqualBox(Box<T> firstBox, Box<T> secondBox) {
+        return firstBox.getItem().equals(secondBox.getItem());
+    }
 }

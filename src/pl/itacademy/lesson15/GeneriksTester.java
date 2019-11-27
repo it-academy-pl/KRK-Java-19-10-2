@@ -88,5 +88,16 @@ public class GeneriksTester {
         System.out.println(integerCollection);
 
         Util.isEqual("test", 5);
+
+        Box<Integer> boxWithInteger = new Box<>(42);
+        Box<Integer> anotherBoxWithInteger = new Box<>(42);
+        Box<String> boxWithString = new Box<>("Test");
+
+        //Won't compile
+        //Util.isEqualBox(boxWithInteger, boxWithString);
+
+        //Compiles OK
+        Util.isEqualBox(boxWithInteger, anotherBoxWithInteger);
+
     }
 }
