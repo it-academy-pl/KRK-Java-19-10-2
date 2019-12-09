@@ -1,20 +1,24 @@
 package pl.itacademy.lesson11;
 
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import pl.itacademy.lesson11.account.Account;
+import pl.itacademy.lesson11.exceptions.BankAccountNotFoundException;
+
 public class Bank {
 
     private String name;
 
     private Address address;
 
-    private Account[] accounts;
-
-    private int lastAccountIndex;
+    private Set<Account> accounts = new HashSet<>();
 
     public Bank(String name, Address address) {
         this.name = name;
         this.address = address;
-        accounts = new Account[100];
-        lastAccountIndex = 0;
     }
 
     protected String getName() {
@@ -26,16 +30,40 @@ public class Bank {
     }
 
     public void addAccount(Account account) {
-        accounts[lastAccountIndex] = account;
-        lastAccountIndex++;
+        accounts.add(account);
     }
 
-    public Account getAccountByNumber(int accountNumber) {
+    public Account getAccountByNumber(int accountNumber) throws BankAccountNotFoundException {
         for (Account account : accounts) {
             if (account.getAccountNumber() == accountNumber) {
                 return account;
             }
         }
-        return null;
+        throw new BankAccountNotFoundException("Bank " +
+            name + " does not contains account number " + accountNumber);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Bank bank = (Bank) o;
+
+        if (name != null ? !name.equals(bank.name) : bank.name != null) {
+            return false;
+        }
+        return address != null ? address.equals(bank.address) : bank.address == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        return result;
     }
 }

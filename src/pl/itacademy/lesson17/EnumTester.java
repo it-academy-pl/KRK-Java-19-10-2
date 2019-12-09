@@ -16,9 +16,31 @@ public class EnumTester {
         System.out.println(p.name() + " radius:" + p.getRadius() + "km");
 
         System.out.println(Planet.EARTH.getEquatorLength());
+
+        System.out.println(Planet.VENUS);
+
+        System.out.println(Planet.VENUS.compareTo(Planet.EARTH));
+        System.out.println(Planet.VENUS.compareTo(Planet.MARS));
+        System.out.println(Planet.MARS.name());
+        System.out.println(Planet.MARS.ordinal());
+
+        Planet planet = Planet.valueOf("EARTH");
+        System.out.println(planet);
+        Planet[] planets = Planet.values();
+        for (Planet planet1 : planets) {
+            System.out.println(planet1);
+        }
+
+        System.out.println("=============================");
+        Planet p1 = Planet.fromPolishName("Ziemia");
+        System.out.println(p1);
+        p1 = Planet.fromPolishName("Jowisz");
+        System.out.println(p1);
+
     }
 
     private static void printSex(Person person) {
         System.out.println(person.getSex());
     }
+
 }

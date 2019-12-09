@@ -1,6 +1,8 @@
-package pl.itacademy.lesson11;
+package pl.itacademy.lesson11.account;
 
 import java.math.BigDecimal;
+import pl.itacademy.lesson11.account.Account;
+import pl.itacademy.lesson11.exceptions.NotEnoughMoney;
 
 public class DebitAccount extends Account {
 
@@ -22,12 +24,10 @@ public class DebitAccount extends Account {
     }
 
     @Override
-    public BigDecimal withDraw(BigDecimal amount) {
+    public BigDecimal withDraw(BigDecimal amount) throws NotEnoughMoney {
         if(balance.compareTo(amount) >= 0) {
-            balance = balance.subtract(amount);
-        } else {
-            System.out.println("Not enough money!");
+            return balance.subtract(amount);
         }
-        return balance;
+        throw new NotEnoughMoney("Not enough money! Current balance: " + balance);
     }
 }
