@@ -1,5 +1,6 @@
 package pl.itacademy.lesson18;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -7,6 +8,8 @@ import java.util.stream.Stream;
 public class StreamTester {
     public static void main(String[] args) {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        numbers.forEach(System.out::println);
 
         int sum = numbers.stream()
                 .filter(number -> number > 5)
@@ -38,5 +41,11 @@ public class StreamTester {
                 .map(person -> person.getLastName())
                 .collect(Collectors.toList());
         System.out.println(lastNames);
+
+
+        List<List<Integer>> listOfLists = List.of(List.of(1, 2, 3), List.of(5, 6), List.of(7, 8, 9, 10));
+        listOfLists.stream()
+                .flatMap(Collection::stream)
+                .forEach(System.out::print);
     }
 }
