@@ -6,6 +6,16 @@ import java.util.Optional;
 
 public class OptionalTester {
     public static void main(String[] args) throws PersonNotFoundException {
+        Optional<String> optionalS = Optional.of("Java");
+        String string = optionalS.get();
+        System.out.println(string);
+        System.out.println(optionalS.orElse("Default"));
+
+        optionalS = Optional.empty();
+//        string = optionalS.get();
+//        System.out.println(string);
+        System.out.println(optionalS.orElse("Default"));
+
         Person person = findByFirstName("Jan");
         if (person != null) {
             System.out.println(person.getLastName());
