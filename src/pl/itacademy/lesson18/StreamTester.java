@@ -38,7 +38,9 @@ public class StreamTester {
         );
 
         List<String> lastNames = people.stream()
+                .filter(person -> person.getFirstName().length() <= 3)
                 .map(person -> person.getLastName())
+                .filter(lastName -> lastName.contains("l"))
                 .collect(Collectors.toList());
         System.out.println(lastNames);
 
